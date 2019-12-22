@@ -86,31 +86,6 @@ class Perceptron_POS_Tagger(object):
         backpointer[len(test_sent.get_snt())]['</S>'] = best_tag
 
         #backtracing
-        '''
-        current_tag = best_tag
-        t = len(test_sent.get_snt()) - 1
-        path = [[test_sent.get_snt()[t], current_tag]]
-
-        if len(test_sent.get_snt()) == 1:
-            return path
-
-        while current_tag != '<S>':
-            t -= 1
-            path.insert(0, [test_sent.get_snt()[t], current_tag])
-            current_tag = backpointer[t][current_tag]
-        '''
-        '''
-        path = []
-        l = len(test_sent.get_snt())
-
-        cur_tag = '</S>'
-        #path.append([test_sent[l-1], cur_tag])
-        while cur_tag != '<S>':
-            path.insert(0,[test_sent.get_snt()[l-1], backpointer[l][cur_tag]])
-            cur_tag = backpointer[l][cur_tag]
-            l -= 1
-        '''
-
         current_tag = best_tag
         t = len(test_sent.get_snt()) - 1
         path = [[test_sent.get_snt()[t], current_tag]]
